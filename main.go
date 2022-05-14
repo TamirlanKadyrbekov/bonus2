@@ -19,9 +19,7 @@ func main() {
 	zipWriter := zip.NewWriter(file)
 	defer zipWriter.Close()
 
-	for i := 1; i < len(os.Args)-2; i++ {
-		filename := os.Args[i]
-		print(i)
+	for _, filename := range os.Args[1:] {
 		if err := AddFileToZip(zipWriter, filename); err != nil {
 			panic(err)
 		}
